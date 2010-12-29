@@ -22,3 +22,5 @@ NullableDatePicker.xib
 
 	
 DEMO/SUPPORT FILES
+ViewController.[h/m/xib]
+	* Hosts the NullableDatePicker. the View Controller's property self.myDate is bound to the Selected Date NSTextField.
