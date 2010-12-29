@@ -1,0 +1,24 @@
+The NullableDatePicker fulfills a UI need that I often have: how to make the NSDatePicker display something when the date value is null.
+
+This first version of NullableDatePicker is my solution.
+
+In a nutshell, if the dateValue is null, or [NSDate nullDate], display an NSButton entitled "Choose". Clicking this Choose Button sets the dateValue to today's date, and also shows a "Clear" button, to allow the user to reset the dateValue to [NSDate nullDate];
+
+In projects using this solution, set the value of any NSDate property to be [NSDate distantFuture], or use the category provided in NSDate+Extras: [NSDate nullDate]. In CoreData, you might want to override awakeFromInsert thusly:
+
+- (void)awakeFromInsert {
+	self.date = [NSDate nullDate];
+}
+
+The project has these files:
+
+RELEVANT FILES
+NullableDatePickerDelegate.h
+	* This defines the protocol that the class that's hosting this control uses to set the date value when that value is changed.
+NullableDatePicker.[h/m]
+	* The control which, based on the value of the property "dateValue", swaps out the NSDatePicker/Clear Buttons.
+NullableDatePicker.xib
+	* Xib file for the NullableDatePicker.
+
+	
+DEMO/SUPPORT FILES
